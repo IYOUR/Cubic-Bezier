@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>CSS3动画可视化编辑器</title>
+	<style>
+	body{margin:0;background:#333;}
+
+	#Container{width: 1270px;height: 580px;margin:30px auto;}
+
+	#Pannl{width: 400px;height: 580px;background: gray;float: left;}
+
+	#Ctrl{width: 400px;height: 180px;background: #702fa8;}
+
+	.CtrlSon{width: 400px;height: 60px;background: gray;}
+
+	p{float: left;font-family:Microsoft YaHei;font-size: 18px; color:#222;line-height: 20px;padding-left: 20px;}
+
+	#OutPut{height: 30px; width: 200px;display: block;font-size:14px;line-height:1.42857143;color:#555555;border:1px solid #cccccc;border-radius:4px 4px 4px 4px;padding-left:5px;line-height: 30px;font-size: 14px;font-family:Microsoft Yahei;letter-spacing: 2px;position: relative;left: 15px;top: 12px;}
+
+	#TimePrintf{
+		height: 30px; width: 40px;float: left;position: absolute;left:60px;top: 490px;font-size:18px;line-height:1.42857143;color:#555555;border:1px solid #cccccc;border-radius:4px 4px 4px 4px;padding-left:15px;line-height: 30px;font-size: 14px;font-family:Microsoft Yahei;letter-spacing: 2px;}
+	#Demonstration{width: 850px;height: 580px;position: relative;left: 420px;background: #5c86c2;}
+
+	canvas{ background:#0e83cd;}
+
+	#DemonSize{width: 800px;height: 170px;margin: 0px auto;}
+
+	#DemonLine{width: 800px;height: 170px;margin: 20px auto;}
+
+	#DemonCircular{width: 800px;height: 187px;margin: 20px auto;}
+
+	#Line{width:800px;height:2px;margin:0;padding:0; background:#eee;position: relative;top: 87px;z-index:1;}
+	#demo1{position: relative;width: 40px;height: 40px;background:#5cb85c;left: 0px;top: 65px;
+		-webkit-transition: all 1s cubic-bezier(0.25 , 0.13 , 0.69 , 0.77);
+  		transition:         all 1s cubic-bezier(0.25 , 0.13 , 0.69 , 0.77);
+  	}
+	
+	#demo2{position: relative;width: 40px;height: 40px;background: #5cb85c;border-radius: 20px;left: 0px;top: 65px;z-index:2;
+		-webkit-transition: all 1s cubic-bezier(0.89, 0.80, 0.56, 0.07);
+  		transition:         all 1s cubic-bezier(0.89, 0.80, 0.56, 0.07);
+	}
+	#demo3Main { position: relative; width: 150px; height: 150px; top: 13px; left: 320px; border:2px solid #eee; border-radius: 50%;
+		-webkit-transition: all 1s cubic-bezier(0.85, 0.3, 0.4, 0.91);
+  		transition:         all 1s cubic-bezier(0.85, 0.3, 0.4, 0.91);	
+	}
+	
+	#demo3Circular { display: none; position: relative; top: -12px; left: 65px; width: 20px; height: 20px; border-radius: 10px; background: #5cb85c; 
+		}
+	#BlackOver{  display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:10;  -moz-opacity: 0.8;  opacity:.80;  filter: alpha(opacity=80);  }  
+  	#ExportBox {  display: none;  position: absolute;  top: 20%;  left: 25%;  width: 50%;  height: 60%;  padding: 16px;  border: 1px solid #222; border-radius: 2%; background-color:#f9f7f6;  z-index:1002;  overflow: auto;  }  
+  	#ExportContent{   position: relative;  top: 1%; margin: 0 auto; width: 99%;  height: 90%;background:#f9f7f6;}
+
+	.TextArea{width: 400px; min-height: 20px; max-height: 300px;height: 120px; margin-left: auto; margin-right: auto; padding: 3px; outline: 0; border: 1px solid #a0b3d6; font-size: 12px; line-height: 24px;padding: 2px;word-wrap: break-word;overflow-x: hidden;overflow-y: auto;border-color: rgba(82, 168, 236, 0.8);box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+		}
+
+	.Button{height: 37px;width: 85px;background: #428bca;margin-top: 35px;margin-left:30px;float: left;border:1px solid #428bca;border-radius:4px 4px 4px 4px;outline:none;line-height: 35px;font-size: 16px;color: white;font-weight: normal;font-family:Simsun;position: relative;top: 40px;left: -160px;cursor:pointer}
+
+ 	.Button:hover{
+		background: #357ebd;
+		border:1px solid #357ebd;} 	
+
+	#Close_button{height: 30px;width: 65px;background: #428bca;margin-left:90%;border:1px solid #428bca;border-radius:4px 4px 4px 4px;outline:none;font-size: 16px;color: white;font-weight: normal;font-family:Simsun;}
+
+	#Close_button:hover{
+		background: #357ebd;
+		border:1px solid #357ebd;} 	
+</style>
+</head>
+<body>
+	<div id="Container">
+		<div id="Pannl">
+			<canvas id="canvas" width="400" height="400"></canvas>
+			<div id="Ctrl">
+				<p>Cubic-bezier:</p>
+				<input id="OutPut" type="text" value=""></p>
+			<input id="TimePrintf" type="text" value="1s">
+			<input type="range" id="MoveTime" value="1" min="0.1" max="10" step="0.1" style="display: block;position: absolute;left:150px;top:495px;"onmousemove="MoveTime()">
+
+			<input id="Export_button" class="Button" type="button" value="Export" onclick="Open()">
+			<input id="Move_button" class="Button" type="button" value="Start" onclick="move()"></div>
+	</div>
+	<div id="Demonstration">
+		<div id="DemonSize">
+			<div id="demo1"></div>
+		</div>
+		<div id="DemonLine">
+			<div id="Line"></div>
+			<div id="demo2"></div>
+		</div>
+		<div id="DemonCircular">
+			<div id="demo3Main" style="transition-timing-function: cubic-bezier(0.85, 0.3, 0.4, 0.91); transform: rotateZ(0deg);">
+				<div id="demo3Circular" style="display: block;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="ExportBox">
+	<input id="Close_button" type="button" value="Close" onclick="Close()">
+	<div id="ExportContent">
+		<textarea id="Text"style="width: 100%; height: 100%;font-family:Microsoft YaHei;font-size: 18px;line-height: 40px;" readonly="readonly"></textarea>
+	</div>
+</div>
+<div id="BlackOver"></div>
+</body>
+<script>
+	var numA_x,numA_y,numB_x,numB_y;
+	var MoveDerction = true;
+	var ExportArray = new Array([100]);
+	//根据贝塞尔曲线值设置动画transition属性
+	function move() {
+	var CubicBezier= numA_x +' , '+ numA_y + ' , ' + numB_x +' , '+ numB_y;
+	var change1 = document.getElementById('demo1');	
+	var change2 = document.getElementById('demo2');
+	var change = document.getElementById('demo3Main');
+    MoveTime()
+	if (MoveDerction) {
+	change1.style.width ="800px";
+	change2.style.left ="760px";
+	change.style.transform = 'rotateZ(360deg)';
+	change1.style.transition = TimeString;
+	change2.style.transition = TimeString;
+	change.style.transition = TimeString;
+	change1.style.transitionTimingFunction = 'cubic-bezier(' + CubicBezier +')';
+	change2.style.transitionTimingFunction = 'cubic-bezier(' + CubicBezier +')';
+	change.style.transitionTimingFunction = 'cubic-bezier(' + CubicBezier +')';	
+	MoveDerction = false;
+	Location_xy()
+	
+	}
+	else {
+	change1.style.width ="40px";
+	change2.style.left ="0px";
+	change.style.transform = 'rotateZ(0deg)';
+	change1.style.transition = TimeString;
+	change2.style.transition = TimeString;
+	change.style.transition = TimeString;
+	change1.style.transitionTimingFunction = 'cubic-bezier(' + CubicBezier +')';
+	change2.style.transitionTimingFunction = 'cubic-bezier(' + CubicBezier +')';
+	change.style.transitionTimingFunction = 'cubic-bezier(' + CubicBezier +')';	
+	MoveDerction = true;
+	 }	
+	
+	}	
+	//显示代码导出div
+	function Open(){
+		 var Open1=document.getElementById('ExportBox');
+		 var Open2=document.getElementById('BlackOver');
+		 Open1.style.display='block';
+		 Open2.style.display='block';
+		 var bezier=document.getElementById('demo1').style.transition;
+		 ExportArray='Demo{-webkit-transition:all'+bezier+';transition:all'+bezier+';}';
+		 var Text=document.getElementById('Text').value=ExportArray;
+		 //console.log(ExportArray);
+	}
+	//隐藏代码导出div
+	function Close(){
+		var Open1=document.getElementById('ExportBox');
+		var Open2=document.getElementById('BlackOver');
+		Open1.style.display='none';
+		Open2.style.display='none';
+	}
+	//获取拖动杆的设置时间
+	function MoveTime() {
+    var MoveTime_x = document.getElementById("MoveTime").value;
+ 	TimeString =MoveTime_x+'s';
+ 	var TimePrintf=document.getElementById("TimePrintf").value=TimeString;
+	}
+
+	var canvas=document.getElementById("canvas"),
+    ctx=canvas.getContext("2d");
+    Drag=false;
+    radius=10;
+	circles=[{x:0,y:400},{x:335,y:335},{x:65,y:65},{x:400,y:0}];//贝塞尔曲线端点与控制点默认参数
+	canvas.onmousedown=canvasClick;
+	canvas.onmouseup=Dragging;
+	canvas.onmouseout=Dragging;
+	canvas.onmousemove=MoveDraw;
+	//控制点是否拖动
+	function Dragging(){	
+ 	 Drag=false;
+	}
+
+	var previousCircle;
+	//canvas点击事件
+	function canvasClick(e){
+	var clickX=e.pageX-canvas.offsetLeft;//获取鼠标焦点坐标
+	var clickY=e.pageY-canvas.offsetTop;
+	for(i=1;i<3;i++){
+	   var circle=circles[i];
+	   var distance=Math.sqrt(Math.pow(circle.x-clickX,2)+Math.pow(circle.y-clickY,2));//获得鼠标焦点与控制点的距离
+	   if(distance<=radius){
+			 previousCircle=circle;
+             Drag=true;
+			 DrawBezier();
+			 return;
+		   }
+		
+		}
+	
+	}	
+
+	//鼠标拖动圆点事件
+	function MoveDraw(e){
+	var moveX=e.pageX-canvas.offsetLeft;
+	var moveY=e.pageY-canvas.offsetTop;
+	if(Drag==true){
+		  previousCircle.x=moveX;
+		  previousCircle.y=moveY;
+		  DrawBezier();
+		}else{
+	canvas.style.cursor="default";
+	for(i=1;i<3;i++){
+		var circle=circles[i];
+		var distance=Math.sqrt(Math.pow(circle.x-moveX,2)+Math.pow(circle.y-moveY,2));
+		if(distance<=radius){
+			
+		    canvas.style.cursor="pointer";
+			}
+		}
+	DrawBezier();
+		}
+	
+	}
+
+	//绘制贝塞尔曲线
+	DrawBezier()
+	function DrawBezier(){
+	//连接控制点与端点
+	  ctx.clearRect(0,0,canvas.width,canvas.height);
+	  ctx.globalAlpha=0.85;
+	  ctx.beginPath();
+	  ctx.moveTo(circles[0].x,circles[0].y);
+	  ctx.lineTo(circles[1].x,circles[1].y);
+	  ctx.moveTo(circles[2].x,circles[2].y);
+	  ctx.lineTo(circles[3].x,circles[3].y);
+	  ctx.lineWidth=3;
+	  ctx.strokeStyle="#eee";
+	  ctx.stroke();
+      
+	 for(i=1;i<3;i++){
+	  var circle=circles[i]
+	  //绘制控制点
+	  ctx.beginPath();
+	  ctx.arc(circle.x,circle.y,radius,0,2*Math.PI);
+	  ctx.strokeStyle="#64bb5d";
+	  ctx.lineWidth=0;
+	  ctx.fillStyle="#64bb5d";
+	  ctx.fill();
+	  ctx.stroke();
+	 }
+	  //绘制贝塞尔曲线
+	  ctx.beginPath();
+	  ctx.moveTo(circles[0].x,circles[0].y);
+	  ctx.bezierCurveTo(circles[1].x,circles[1].y,circles[2].x,circles[2].y,circles[3].x,circles[3].y);
+	  ctx.lineWidth=3;
+	  ctx.strokeStyle='#702fa8';
+	  ctx.stroke();
+      Location_xy()
+
+	 }
+	 
+	//获取贝塞尔曲线坐标值并换算	 
+	function Location_xy(){
+   	for(i=1;i<3;i++){
+   	var CubicBezier= numA_x +' , '+ numA_y + ' , ' + numB_x +' , '+ numB_y;//拼凑CubicBezier值字符串
+   	var OutPut = document.getElementById('OutPut');
+   	   OutPut.value=CubicBezier;
+	   var BezierA_x=Math.floor(circles[1].x);
+	   var BezierA_y=Math.floor(circles[1].y);
+	   var BezierB_x=Math.floor(circles[2].x);
+	   var BezierB_y=Math.floor(circles[2].y);
+	   numA_x = BezierA_x/400;
+	   numA_y = 1-BezierA_y/400;
+	   numB_x = BezierB_x/400;
+	   numB_y = 1-BezierB_y/400;
+	   numA_x = numA_x.toFixed(2);
+	   numA_y = numA_y.toFixed(2);  
+	   numB_x = numB_x.toFixed(2);
+	   numB_y = numB_y.toFixed(2); 
+   		}
+   		console.log(numB_y);
+	}  
+</script></html>
