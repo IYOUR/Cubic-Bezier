@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cubic-Bezier</title>
+	<style>
+	body{margin:0;background:#333;}
+
+	#Container{width: 1270px;height: 580px;margin:30px auto;}
+
+	#Pannl{width: 400px;height: 580px;background: gray;float: left;}
+
+	#Ctrl{width: 400px;height: 180px;background: #702fa8;}
+
+	.CtrlSon{width: 400px;height: 60px;background: gray;}
+
+	p{float: left;font-family:Microsoft YaHei;font-size: 18px; color:#222;line-height: 20px;padding-left: 20px;}
+
+	#OutPut{height: 30px; width: 200px;display: block;font-size:14px;line-height:1.42857143;color:#555555;border:1px solid #cccccc;border-radius:4px 4px 4px 4px;padding-left:5px;line-height: 30px;font-size: 14px;font-family:Microsoft Yahei;letter-spacing: 2px;position: relative;left: 15px;top: 12px;}
+
+	#TimePrintf{
+		height: 30px; width: 40px;float: left;position: absolute;left:60px;top: 490px;font-size:18px;line-height:1.42857143;color:#555555;border:1px solid #cccccc;border-radius:4px 4px 4px 4px;padding-left:15px;line-height: 30px;font-size: 14px;font-family:Microsoft Yahei;letter-spacing: 2px;}
+	#Demonstration{width: 850px;height: 580px;position: relative;left: 420px;background: #5c86c2;}
+
+	canvas{ background:#0e83cd;}
+
+	#DemonSize{width: 800px;height: 170px;margin: 0px auto;}
+
+	#DemonLine{width: 800px;height: 170px;margin: 20px auto;}
+
+	#DemonCircular{width: 800px;height: 187px;margin: 20px auto;}
+
+	#Line{width:800px;height:2px;margin:0;padding:0; background:#eee;position: relative;top: 87px;z-index:1;}
+	#demo1{position: relative;width: 40px;height: 40px;background:#5cb85c;left: 0px;top: 65px;
+		-webkit-transition: all 1s cubic-bezier(0.25 , 0.13 , 0.69 , 0.77);
+  		transition:         all 1s cubic-bezier(0.25 , 0.13 , 0.69 , 0.77);
+  	}
+	
+	#demo2{position: relative;width: 40px;height: 40px;background: #5cb85c;border-radius: 20px;left: 0px;top: 65px;z-index:2;
+		-webkit-transition: all 1s cubic-bezier(0.89, 0.80, 0.56, 0.07);
+  		transition:         all 1s cubic-bezier(0.89, 0.80, 0.56, 0.07);
+	}
+	#demo3Main { position: relative; width: 150px; height: 150px; top: 13px; left: 320px; border:2px solid #eee; border-radius: 50%;
+		-webkit-transition: all 1s cubic-bezier(0.85, 0.3, 0.4, 0.91);
+  		transition:         all 1s cubic-bezier(0.85, 0.3, 0.4, 0.91);	
+	}
+	
+	#demo3Circular { display: none; position: relative; top: -12px; left: 65px; width: 20px; height: 20px; border-radius: 10px; background: #5cb85c; 
+		}
+	#BlackOver{  display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:10;  -moz-opacity: 0.8;  opacity:.80;  filter: alpha(opacity=80);  }  
+  	#ExportBox {  display: none;  position: absolute;  top: 20%;  left: 25%;  width: 50%;  height: 60%;  padding: 16px;  border: 1px solid #222; border-radius: 2%; background-color:#f9f7f6;  z-index:1002;  overflow: auto;  }  
+  	#ExportContent{   position: relative;  top: 1%; margin: 0 auto; width: 99%;  height: 90%;background:#f9f7f6;}
+
+	.TextArea{width: 400px; min-height: 20px; max-height: 300px;height: 120px; margin-left: auto; margin-right: auto; padding: 3px; outline: 0; border: 1px solid #a0b3d6; font-size: 12px; line-height: 24px;padding: 2px;word-wrap: break-word;overflow-x: hidden;overflow-y: auto;border-color: rgba(82, 168, 236, 0.8);box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+		}
+
+	.Button{height: 37px;width: 85px;background: #428bca;margin-top: 35px;margin-left:30px;float: left;border:1px solid #428bca;border-radius:4px 4px 4px 4px;outline:none;line-height: 35px;font-size: 16px;color: white;font-weight: normal;font-family:Simsun;position: relative;top: 40px;left: -160px;cursor:pointer}
+
+ 	.Button:hover{
+		background: #357ebd;
+		border:1px solid #357ebd;} 	
+
+	#Close_button{height: 30px;width: 65px;background: #428bca;margin-left:90%;border:1px solid #428bca;border-radius:4px 4px 4px 4px;outline:none;font-size: 16px;color: white;font-weight: normal;font-family:Simsun;}
+
+	#Close_button:hover{
+		background: #357ebd;
+		border:1px solid #357ebd;} 	
+	</style>
+</head>
+<body>
+	<div id="Container">
+		<div id="Pannl">
+			<canvas id="canvas" width="400" height="400"></canvas>
+			<div id="Ctrl">
+				<p>Cubic-bezier:</p>
+				<input id="OutPut" type="text" value=""></p>
+			<input id="TimePrintf" type="text" value="1s">
+			<input type="range" id="MoveTime" value="1" min="0.1" max="10" step="0.1" style="display: block;position: absolute;left:150px;top:495px;"onmousemove="MoveTime()">
+
+			<input id="Export_button" class="Button" type="button" value="Export" onclick="Open()">
+			<input id="Move_button" class="Button" type="button" value="Start" onclick="move()"></div>
+	</div>
+	<div id="Demonstration">
+		<div id="DemonSize">
+			<div id="demo1"></div>
+		</div>
+		<div id="DemonLine">
+			<div id="Line"></div>
+			<div id="demo2"></div>
+		</div>
+		<div id="DemonCircular">
+			<div id="demo3Main" style="transition-timing-function: cubic-bezier(0.85, 0.3, 0.4, 0.91); transform: rotateZ(0deg);">
+				<div id="demo3Circular" style="display: block;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="ExportBox">
+	<input id="Close_button" type="button" value="Close" onclick="Close()">
+	<div id="ExportContent">
+		<textarea id="Text"style="width: 100%; height: 100%;font-family:Microsoft YaHei;font-size: 18px;line-height: 40px;" readonly="readonly"></textarea>
+	</div>
+</div>
+<div id="BlackOver"></div>
+</body>
+<script type="text/javascript" src="js/main.js"></script>
+</html>
