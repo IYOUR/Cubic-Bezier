@@ -139,7 +139,7 @@ var numA_x,numA_y,numB_x,numB_y;
 	  ctx.moveTo(circles[0].x,circles[0].y);
 	  ctx.bezierCurveTo(circles[1].x,circles[1].y,circles[2].x,circles[2].y,circles[3].x,circles[3].y);
 	  ctx.lineWidth=3;
-	  ctx.strokeStyle='#702fa8';
+	  ctx.strokeStyle='#64bb5d';
 	  ctx.stroke();
       Location_xy()
 

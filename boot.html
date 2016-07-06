@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Bootstrap 实例 - 面板标题</title>
+   <meta charset="UTF-8">
+   <title>Cubic-Bezier</title>
    <link href="css/bootstrap.css" rel="stylesheet">
    <script src="js/jquery.js"></script>
    <script src="js/bootstrap.js"></script>
    <style>
+   .container{margin-top: 2%;}
    #DemonSize{width: 90%;height: 170px;margin: 0px auto;}
 
    #DemonLine{width: 90%;height: 170px;margin: 20px auto;}
@@ -33,9 +35,9 @@
 <body>
    <div class="container">
       <div class="row">
-         <div class="col-xs-12 col-md-5">
+         <div style="float: left;width: 460px;">
             <div class="panel panel-default">
-               <div class="panel-heading">不带 title 的面板标题</div>
+               <div class="panel-heading">拖动控制点以改变曲线</div>
                <div class="panel-body">
                <div style="width: 400px; height: 400px;margin:0 auto;">
                   <canvas id="canvas" width="400" height="400"></canvas>
@@ -65,14 +67,14 @@
                            <div class="modal-header">
                               <button type="button" class="close" 
                                  data-dismiss="modal" aria-hidden="true">&times;</button>
-                              <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+                              <h4 class="modal-title" id="myModalLabel">Export Cubic-Bezier Value</h4>
                            </div>
                            <div class="modal-body">
                               <textarea id="Text" class="form-control" rows="3" style="max-width: 100%;"></textarea>
                            </div>
                            <div class="modal-footer">
                               <button type="button" class="btn btn-default" 
-                                    data-dismiss="modal">关闭</button>
+                                    data-dismiss="modal">Close</button>
                            </div>
                         </div>
                       </div>
@@ -81,9 +83,9 @@
             </div>
          </div>
 
-         <div class="col-xs-12 col-md-7">
+         <div style="width: 655px;float: right;">
             <div class="panel panel-default">
-               <div class="panel-heading">不带 title 的面板标题</div>
+               <div class="panel-heading">Demonstration</div>
                <div class="panel-body">
                   <div id="DemonSize">
                      <div id="demo1"></div>
