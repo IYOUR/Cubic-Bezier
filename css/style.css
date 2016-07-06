@@ -1,4 +1,5 @@
-   .container{margin-top: 2%;}
+	h1{line-height: 5px;}
+   .container { width:1170px;max-width:none !important;}
    #DemonSize{width: 90%;height: 170px;margin: 0px auto;}
 
    #DemonLine{width: 90%;height: 170px;margin: 20px auto;}
