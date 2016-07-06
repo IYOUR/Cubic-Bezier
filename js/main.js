@@ -9,8 +9,8 @@ var numA_x,numA_y,numB_x,numB_y;
 	var change = document.getElementById('demo3Main');
     MoveTime()
 	if (MoveDerction) {
-	change1.style.width ="800px";
-	change2.style.left ="760px";
+	change1.style.width ="100%";
+	change2.style.left ="90%";
 	change.style.transform = 'rotateZ(360deg)';
 	change1.style.transition = TimeString;
 	change2.style.transition = TimeString;
@@ -38,27 +38,18 @@ var numA_x,numA_y,numB_x,numB_y;
 	}	
 	//显示代码导出div
 	function Open(){
-		 var Open1=document.getElementById('ExportBox');
-		 var Open2=document.getElementById('BlackOver');
-		 Open1.style.display='block';
-		 Open2.style.display='block';
+		 
+		
 		 var bezier=document.getElementById('demo1').style.transition;
 		 ExportArray='Demo{-webkit-transition:all'+bezier+';transition:all'+bezier+';}';
 		 var Text=document.getElementById('Text').value=ExportArray;
 		 //console.log(ExportArray);
 	}
-	//隐藏代码导出div
-	function Close(){
-		var Open1=document.getElementById('ExportBox');
-		var Open2=document.getElementById('BlackOver');
-		Open1.style.display='none';
-		Open2.style.display='none';
-	}
-	//获取拖动杆的设置时间
+	
+	//获取设置时间
 	function MoveTime() {
     var MoveTime_x = document.getElementById("MoveTime").value;
  	TimeString =MoveTime_x+'s';
- 	var TimePrintf=document.getElementById("TimePrintf").value=TimeString;
 	}
 
 	var canvas=document.getElementById("canvas"),

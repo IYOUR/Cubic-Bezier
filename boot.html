@@ -43,7 +43,7 @@
                      <input id="OutPut" type="text" class="form-control" value=""></div>
                   <div class="input-group"  style="margin-top: 20px;">
                      <span class="input-group-addon">Time (s)</span>
-                     <select class="form-control">
+                     <select id="MoveTime" class="form-control">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -53,8 +53,8 @@
                   </div>
                   <div style="margin-top: 20px;">
                      <button type="button" class="btn btn-primary" data-toggle="modal" 
-                           data-target="#myModal" style="margin-right: 10%;">Export</button>
-                     <button type="button" class="btn btn-primary">Start</button>
+                           data-target="#myModal" style="margin-right: 10%;" onclick="Open()">Export</button>
+                     <button type="button" class="btn btn-primary" onclick="move()">Start</button>
                   </div>
                   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
                            aria-labelledby="myModalLabel" aria-hidden="true">
@@ -66,7 +66,7 @@
                               <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
                            </div>
                            <div class="modal-body">
-                              <textarea class="form-control" rows="3" style="max-width: 100%;"></textarea>
+                              <textarea id="Text" class="form-control" rows="3" style="max-width: 100%;"></textarea>
                            </div>
                            <div class="modal-footer">
                               <button type="button" class="btn btn-default" 
