@@ -32,11 +32,14 @@
 </head>
 <body>
    <div class="container">
-         <div class="pull-left" style="width:470px;">
+      <div class="row">
+         <div class="col-xs-12 col-md-5">
             <div class="panel panel-default">
                <div class="panel-heading">不带 title 的面板标题</div>
                <div class="panel-body">
+               <div style="width: 400px; height: 400px;margin:0 auto;">
                   <canvas id="canvas" width="400" height="400"></canvas>
+               </div>   
                   <div class="input-group" style="margin-top: 40px;">
                      <span class="input-group-addon">Cubic-bezier</span>
                      <input id="OutPut" type="text" class="form-control" value=""></div>
@@ -78,7 +81,7 @@
             </div>
          </div>
 
-         <div class="pull-right" style="width: 650px;">
+         <div class="col-xs-12 col-md-7">
             <div class="panel panel-default">
                <div class="panel-heading">不带 title 的面板标题</div>
                <div class="panel-body">
@@ -97,6 +100,7 @@
                </div>
             </div>
          </div>
+      </div>
    </div>
 </body>
    <script type="text/javascript" src="js/main.js"></script>
