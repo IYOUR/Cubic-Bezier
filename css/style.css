@@ -1,0 +1,23 @@
+   .container{margin-top: 2%;}
+   #DemonSize{width: 90%;height: 170px;margin: 0px auto;}
+
+   #DemonLine{width: 90%;height: 170px;margin: 20px auto;}
+
+   #DemonCircular{width: 90%;height: 187px;margin: 20px auto;}
+
+   #Line{width:90%;height:2px;margin:0;padding:0; background:#eee;position: relative;top: 87px;z-index:1;}
+   #demo1{position: relative;width: 40px;height: 40px;background:#5cb85c;left: 0px;top: 65px;
+      -webkit-transition: all 1s cubic-bezier(0.25 , 0.13 , 0.69 , 0.77);
+      transition:         all 1s cubic-bezier(0.25 , 0.13 , 0.69 , 0.77);
+   }
+   
+   #demo2{position: relative;width: 40px;height: 40px;background: #5cb85c;border-radius: 20px;left: 0px;top: 65px;z-index:2;
+      -webkit-transition: all 1s cubic-bezier(0.89, 0.80, 0.56, 0.07);
+      transition:         all 1s cubic-bezier(0.89, 0.80, 0.56, 0.07);
+   }
+   #demo3Main { position: relative; width: 150px; height: 150px; top: 13px; left: 30%; border:2px solid #eee; border-radius: 50%;
+      -webkit-transition: all 1s cubic-bezier(0.85, 0.3, 0.4, 0.91);
+      transition:         all 1s cubic-bezier(0.85, 0.3, 0.4, 0.91); 
+   }
+   
+   #demo3Circular { display: none; position: relative; top: -12px; left: 65px; width: 20px; height: 20px; border-radius: 10px; background: #5cb85c; }
