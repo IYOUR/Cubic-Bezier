@@ -120,7 +120,7 @@ var numA_x,numA_y,numB_x,numB_y;
 	  ctx.moveTo(circles[2].x,circles[2].y);
 	  ctx.lineTo(circles[3].x,circles[3].y);
 	  ctx.lineWidth=3;
-	  ctx.strokeStyle="#eee";
+	  ctx.strokeStyle="#ddd";
 	  ctx.stroke();
       
 	 for(i=1;i<3;i++){
