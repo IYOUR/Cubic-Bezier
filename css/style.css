@@ -6,7 +6,7 @@
 
    #DemonCircular{width: 90%;height: 187px;margin: 20px auto;}
 
-   #Line{width:90%;height:2px;margin:0;padding:0; background:#eee;position: relative;top: 87px;z-index:1;}
+   #Line{width:90%;height:2px;margin:0;padding:0; background:#ddd;position: relative;top: 87px;z-index:1;}
    #demo1{position: relative;width: 40px;height: 40px;background:#5cb85c;left: 0px;top: 65px;
       -webkit-transition: all 1s cubic-bezier(0.25 , 0.13 , 0.69 , 0.77);
       transition:         all 1s cubic-bezier(0.25 , 0.13 , 0.69 , 0.77);
